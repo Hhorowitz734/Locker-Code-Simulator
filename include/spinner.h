@@ -8,40 +8,28 @@ typedef struct Spinner {
     int position;
 } Spinner;
 
-Spinner* createSpinner(int value, int position) {
+/**
+ * @brief Creates a new Spinner object give its initial value and position
+ * 
+ * @param value The desired value for the spinner
+ * @param position The position of this spinner relative to others (1-indexed)
+*/
+Spinner* createSpinner(int value, int position);
 
-    Spinner *returnSpinner = (Spinner*)malloc(sizeof(Spinner));
-    returnSpinner->value = value;
-    returnSpinner->position = position;
+/**
+ * @brief Simulates the spinner a certain numPlaces counter-clockwise
+ * 
+ * @param spinner The spinner object to be modified
+ * @param numPlaces The number of places the spinner should be turned counter-clockwise
+*/
+void turnCounterClockwise(Spinner* spinner, int numPlaces);
 
-    return returnSpinner;
-    
-}
-
-void turnCounterClockwise(Spinner* spinner, int numPlaces) {
-
-    if (numPlaces < 0) {
-        turnClockwise(spinner, numPlaces);
-        return;
-    }
-
-    spinner->value = (spinner->value - numPlaces + 10) % 10;
-}
-
-void turnClockwise(Spinner* spinner, int numPlaces) {
-
-    if (numPlaces < 0) { 
-        turnCounterClockwise(spinner, numPlaces); 
-        return;
-    }
-
-    spinner->value += numPlaces;
-    spinner->value %= 10;
-}
-
-
-
-
-
+/**
+ * @brief Simulates the spinner a certain numPlaces clockwise
+ * 
+ * @param spinner The spinner object to be modified
+ * @param numPlaces The number of places the spinner should be turned clockwise
+*/
+void turnClockwise(Spinner* spinner, int numPlaces);
 
 #endif

@@ -1,15 +1,18 @@
-#include "include/spinner.h"
+#include "include/locker.h"
 #include <stdio.h>
 
 int main() {
 
-    Spinner* spinner = createSpinner(5, 1);
+    Locker* locker = createLocker();
 
-    printf("%d\n", spinner->value);
+    int a = lock(locker);
+    printf("%d\n", a);
 
-    turnCounterClockwise(spinner, 14);
+    turnClockwise(locker->spinner1, 12);
+    printf("%d\n", unlock(locker));
 
-    printf("%d\n", spinner->value);
+    turnCounterClockwise(locker->spinner1, 2);
+    printf("%d\n", unlock(locker));
 
 
     return 0;
